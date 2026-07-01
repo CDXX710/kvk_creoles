@@ -110,7 +110,7 @@
 	--ease-in-out: ease-in-out;
 
 	/* ── Layout: side-nav ── */
-	--nav-width: 10vw;
+	--nav-width: 16vw;
 	--nav-padding-y: 1.2rem;
 	--nav-padding-x: 2rem;
 	--nav-gap: var(--space-2);
@@ -120,7 +120,6 @@
 	--main-padding-x: 20vw;
 	--main-margin-top: 5vh;
 	--main-margin-bottom: 80vh;
-	--main-max-width: 60vw;
 
 	/* ── Layout: header (map page) ── */
 	--header-height: 3.25rem;
@@ -258,7 +257,6 @@ main {
 	margin-bottom: var(--main-margin-bottom);
 	padding-left: var(--main-padding-x);
 	padding-right: var(--main-padding-x);
-	max-width: var(--main-max-width);
 }
 
 /* ─────────────────────────────────────────
