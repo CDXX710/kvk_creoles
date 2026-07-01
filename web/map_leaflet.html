@@ -70,7 +70,7 @@
 				height: var(--header-height);
 				display: flex;
 				align-items: center;
-				gap: var(--space-7);
+				gap: var(--space-6);
 				flex-shrink: 0;
 				background: var(--color-surface);
 				border-bottom: 1px solid var(--color-border);
@@ -228,7 +228,7 @@
 				padding: 0;
 			}
 
-			.visualizer iframe {
+			.visualizer .lorem_main {
 				position: absolute;
 				z-index: var(--z-modal);
 				width: 60%;
@@ -257,17 +257,22 @@
 			}
 
 			.visualizer-close {
-				z-index: var(--z-tooltip);
-				cursor: pointer;
+				z-index: var(--z-modal);
 				position: absolute;
-				top: 7%;
-				right: 22%;
+				top: 5.5%;
+				right: 20.5%;
+				width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0;
+				margin: 0;
 				border: none;
-				text-align: center;
-				font: 36px / 36px Tahoma, Verdana, sans-serif;
-				color: #757575;
-				text-decoration: none;
-				background: 0 0;
+				background: transparent;
+				color: var(--color-text-secondary);
+				font: var(--font-size-xl) Tahoma, Verdana, sans-serif;
+				cursor: pointer;
 			}
 
 			/* ─────────────────────────────────────────
@@ -285,7 +290,6 @@
 			.select-toolbar {
 				background: var(--color-overlay);
 				border-radius: var(--radius-lg) !important;
-
 				box-shadow: var(--shadow-popup);
 				backdrop-filter: blur(0.75rem);
 				overflow: hidden;
@@ -306,7 +310,8 @@
 				border: none;
 				color: var(--color-text-secondary);
 				cursor: pointer;
-				transition: color var(--duration-fast), background var(--duration-fast);
+				transition: color var(--duration-fast);
+				background: var(--duration-fast);
 			}
 
 			.select-toolbar__btn:not(:last-child)::after {
@@ -320,7 +325,7 @@
 			}
 
 			.select-toolbar__btn:hover {
-				color: var(--color-text);
+				color: var(--color-accent);
 				background: var(--color-surface);
 			}
 
@@ -457,7 +462,7 @@
 				background: none;
 				border: none;
 				cursor: pointer;
-				color: var(--color-text-muted);
+				color: var(--color-text-secondary);
 				font-family: var(--font-mono);
 				font-size: var(--font-size-2xs);
 				letter-spacing: 0.05em;
@@ -469,7 +474,7 @@
 
 			.selection-results__clear:hover,
 			.selection-results__close:hover {
-				color: var(--color-text);
+				color: var(--color-accent);
 			}
 
 			.selection-results__list {
@@ -490,13 +495,14 @@
 			.result-row {
 				display: flex;
 				align-items: center;
-				gap: var(--space-4);
-				padding: var(--space-3) var(--space-4);
+				justify-content: space-between;
+				gap: 0.75rem;
+				padding: 0.55rem 0.75rem;
 				background: var(--color-surface);
-				border: 0.0625rem solid var(--color-border);
+				border: 1px solid var(--color-border);
 				border-radius: var(--radius-md);
-				cursor: pointer;
 				transition: border-color var(--duration-fast), transform var(--duration-fast);
+				cursor: pointer;
 			}
 
 			.result-row:hover {
@@ -504,32 +510,47 @@
 				transform: translateY(-1px);
 			}
 
+			.result-row__left {
+				display: flex;
+				align-items: center;
+				gap: 0.65rem;
+				min-width: 0;
+				flex: 1;
+			}
+
 			.result-row__dot {
+				width: 14px;
+				height: 14px;
 				flex-shrink: 0;
-				width: 0.875rem;
-				height: 0.875rem;
+			}
+
+			.result-row__name {
+				font-size: var(--font-size-sm);
+				color: var(--color-text);
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 
 			.result-row__body {
-				min-width: 0;
 				display: flex;
 				flex-direction: column;
-				gap: 0.15rem;
+				align-items: flex-end;
+				flex-shrink: 0;
+				text-align: right;
+				gap: 2px;
 			}
 
-			.result-row__cat {
-				font-size: var(--font-size-sm);
+			.result-row__year {
+				font-family: var(--font-mono);
+				font-size: var(--font-size-xs);
 				color: var(--color-text);
-				text-transform: capitalize;
 			}
 
 			.result-row__meta {
 				font-family: var(--font-mono);
-				font-size: var(--font-size-2xs);
+				font-size: var(--font-size-xs);
 				color: var(--color-text-secondary);
 				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
 			}
 
 			/* ─────────────────────────────────────────
@@ -569,7 +590,7 @@
 				font-size: 0.7rem;
 				letter-spacing: var(--letter-spacing-wide);
 				text-transform: uppercase;
-				color: var(--color-text-muted);
+				color: var(--color-text-secondary);
 				font-weight: var(--font-weight-medium);
 			}
 
@@ -577,7 +598,7 @@
 				background: none;
 				border: none;
 				cursor: pointer;
-				color: var(--color-text-muted);
+				color: var(--color-text-secondary);
 				padding: 0.1rem 0.2rem;
 				border-radius: var(--radius-sm);
 				display: flex;
@@ -586,7 +607,7 @@
 			}
 
 			.legend__collapse-btn:hover {
-				color: var(--color-text);
+				color: var(--color-accent);
 			}
 
 			.legend__collapse-btn svg {
@@ -620,7 +641,7 @@
 				font-size: 0.8rem;
 				letter-spacing: var(--letter-spacing-wider);
 				text-transform: uppercase;
-				color: var(--color-text-muted);
+				color: var(--color-text-secondary);
 				font-weight: var(--font-weight-medium);
 				margin-bottom: 0.65rem;
 			}
@@ -836,7 +857,7 @@
 			}
 
 			.popup__source-link:hover {
-				color: var(--color-text);
+				color: var(--color-accent);
 			}
 
 			.popup__source-link svg {
@@ -936,7 +957,184 @@
 
 			.leaflet-control-zoom a:hover {
 				background: var(--color-surface) !important;
-				color: var(--color-text) !important;
+				color: var(--color-accent) !important;
+			}
+
+			/* ─────────────────────────────────────────
+			   LOREM IPSUM OVERRIDES
+			───────────────────────────────────────── */
+
+			.lorem_main {
+				width: min(100%, 1200px);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.lorem_header__ {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+				gap: 2rem;
+				padding: 2rem;
+			}
+
+			.lorem_header__h1 {
+				font-size: 4rem;
+			}
+
+			.lorem_header__h2 {
+				font-size: 1.7rem;
+			}
+
+			.lorem_header__sub {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 1rem 0 2rem;
+				padding: 1rem;
+				text-align: center;
+			}
+
+			.lorem_header__h3 {
+				font-size: 1.4rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.lorem_header__h4 {
+				font-size: 1.1rem;
+				font-weight: normal;
+			}
+
+			.lorem_boxed {
+				width: min(90%, 900px);
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				margin: 0;
+				margin-bottom: 2rem;
+
+				border: 0.0625rem solid var(--color-border);
+				border-radius: var(--radius-xl);
+
+				color: var(--color-text);
+				box-shadow: var(--shadow-popup);
+				font-family: var(--font-sans);
+				backdrop-filter: blur(0.5rem);
+				padding: 1rem;
+				overflow: hidden;
+
+				line-height: 1.6;
+			}
+
+			[role="button"]:hover,
+			button:hover {
+				color: var(--color-accent) !important;
+			}
+
+			.custom-select {
+				position: relative;
+				width: max-content;
+				min-width: 180px;
+			}
+
+			.custom-select__trigger {
+				width: 76%;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: var(--space-2);
+
+				padding: 0.35rem 0.65rem;
+
+				background: none;
+
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius-md);
+
+				cursor: pointer;
+
+				text-transform: uppercase;
+				font-family: var(--font-mono);
+				font-size: var(--font-size-2xs);
+				letter-spacing: var(--letter-spacing-wide);
+				color: var(--color-text-secondary);
+
+				transition: border-color var(--duration-fast), background var(--duration-fast), color var(--duration-fast);
+			}
+
+			.custom-select__trigger:hover {
+				border-color: var(--color-border-strong);
+			}
+
+			.custom-select__trigger:focus-visible {
+				outline: none;
+				border-color: var(--color-accent);
+				box-shadow: 0 0 0 3px var(--color-accent-dim);
+			}
+
+			.custom-select__trigger svg {
+				transition: transform 0.2s;
+			}
+
+			.custom-select.open .custom-select__trigger svg {
+				transform: rotate(180deg);
+			}
+
+			.custom-select__menu {
+				position: absolute;
+				left: 0;
+				top: calc(100% + 0.35rem);
+
+				width: 100%;
+
+				padding: 0.35rem;
+
+				margin: 0;
+				list-style: none;
+
+				background: var(--color-elevated);
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius-md);
+
+				display: none;
+				z-index: 100;
+
+				box-shadow: var(--shadow-lg);
+			}
+
+			.custom-select.open .custom-select__menu {
+				display: block;
+			}
+
+			.custom-select__option {
+				padding: 0.5rem 0.65rem;
+
+				border-radius: var(--radius-sm);
+
+				cursor: pointer;
+
+				font-family: var(--font-sans);
+				color: var(--color-text-secondary);
+
+				transition: background var(--duration-fast), color var(--duration-fast);
+			}
+
+			.custom-select__option:hover {
+				background: var(--color-surface-hover);
+				color: var(--color-text);
+			}
+
+			.custom-select__option.is-selected {
+				background: var(--color-accent-dim);
+				color: var(--color-accent);
+			}
+
+			.custom-select__option:active {
+				transform: scale(0.98);
 			}
 		</style>
 	</head>
@@ -959,9 +1157,32 @@
 		<!-- ── Map ── -->
 		<div id="map">
 			<!-- Visualizer Window -->
-			<div class="visualizer" id="fullText" onclick="toggleWindowPopup()">
-				<iframe src="./lorem_ipsum.html"></iframe>
-				<div class="visualizer-close" role="button">x</div>
+			<div class="visualizer" id="visualizer" onclick="toggleWindowPopup()">
+				<div class="lorem_main">
+					<div class="lorem_header__">
+						<h1 class="lorem_header__h1">Lorem Ipsum</h1>
+						<h2 class="lorem_header__h2">Illustrative data only</h2>
+					</div>
+
+					<div class="lorem_header__sub">
+						<h4 class="lorem_header__h3">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4>
+
+						<h5 class="lorem_header__h4">"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h5>
+					</div>
+
+					<div class="lorem_boxed">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst. In eget mauris sit amet nibh lobortis elementum ac ut mauris. Donec risus dui, varius eu condimentum condimentum, blandit eu sem. Donec viverra quam eget eros suscipit finibus. Donec eleifend id eros in vehicula. Nulla eleifend fringilla vulputate. Etiam sagittis odio dolor, finibus euismod ante pharetra id.</p>
+
+						<p>Etiam vitae erat sed lorem eleifend tempor at in sapien. Fusce nec neque non nunc tincidunt porttitor et quis erat. Fusce iaculis tempus nibh sit amet bibendum. Nunc volutpat, sapien a tincidunt varius, turpis purus viverra est, a hendrerit urna massa eget libero. Proin vehicula urna a dolor elementum feugiat. Donec risus massa, iaculis sed facilisis a, faucibus sit amet arcu. Mauris imperdiet a lacus et viverra.</p>
+
+						<p>Pellentesque eget nisi varius, vestibulum nisi id, eleifend turpis. Aenean vestibulum turpis ut massa ullamcorper viverra. Morbi nec lobortis neque, a interdum odio. Nam ut est cursus, feugiat orci at, vestibulum urna. Phasellus ut elementum mi, vel elementum lacus. Donec rutrum, enim vel lobortis molestie, magna metus luctus turpis, et fringilla ante lacus sed ante. In mollis libero vitae velit lacinia, eu vestibulum enim placerat. Quisque euismod sagittis justo. Duis ultricies at sapien vel luctus. Donec ut felis ut nulla pretium mollis. Donec ultricies lorem mi, ac iaculis mauris blandit in. Etiam semper dolor a arcu ultricies maximus. Fusce at scelerisque libero. Proin consectetur odio quis lectus volutpat rutrum. Vivamus et tellus lobortis, accumsan mauris sit amet, auctor est. Sed ut ante at tellus iaculis faucibus.</p>
+
+						<p>Sed eget mi in arcu fermentum elementum. Ut vitae metus sagittis, placerat neque suscipit, pharetra turpis. Etiam sed vulputate ipsum, sed ullamcorper velit. Cras tristique feugiat ultricies. Integer finibus rhoncus mollis. Nam vehicula vitae tortor eget tempus. Phasellus malesuada finibus vestibulum. Curabitur in ante efficitur, efficitur dui sed, ultricies ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam commodo maximus cursus.</p>
+
+						<p>Phasellus elementum tellus erat, ut varius risus viverra a. Sed mi diam, vehicula sit amet fringilla sit amet, lacinia eu neque. Duis scelerisque maximus nunc, et euismod augue bibendum eget. Etiam molestie cursus magna, in semper nunc gravida a. Donec sollicitudin ut ante sit amet suscipit. Suspendisse potenti. Quisque turpis turpis, maximus nec pretium non, efficitur ut justo. Vestibulum ullamcorper ante nunc, sed viverra dui finibus id. Nam gravida sed leo sit amet rutrum. Nulla facilisi. Fusce quis nibh dignissim, euismod ante id, consequat diam. In pellentesque mauris eu odio auctor feugiat. In nec lacus interdum, scelerisque mi a, facilisis nibh. Nulla facilisi. Phasellus ut dui metus. Sed hendrerit commodo interdum.</p>
+					</div>
+				</div>
+				<button class="visualizer-close" aria-label="Close">✕</button>
 			</div>
 			<!-- Selection toolbar: shape row + (on arm) boolean-mode row -->
 			<div id="map-select-toolbar">
@@ -1023,7 +1244,27 @@
 			<!-- Dedicated panel for selection results, separate from feature popups -->
 			<div class="selection-results" id="selectionResults">
 				<div class="selection-results__header">
-					<span class="selection-results__title">Selection — <span id="selectionCount">0</span></span>
+					<span class="selection-results__title">
+						Selection —
+						<span id="selectionCount"> 0 </span>
+						<hr style="height: 0.5rem; border: none" />
+						<div class="custom-select" id="selection-results-sort">
+							<button class="custom-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+								<span class="custom-select__value">Name</span>
+
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+									<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<ul class="custom-select__menu" role="listbox">
+								<li class="custom-select__option is-selected" data-value="name">Name</li>
+								<li class="custom-select__option" data-value="date">Date</li>
+								<li class="custom-select__option" data-value="creoleType">Creole type</li>
+								<li class="custom-select__option" data-value="documentType">Document type</li>
+							</ul>
+							<input type="hidden" id="selection-results__sort" name="selection-results__sort" value="index" />
+						</div>
+					</span>
 					<div class="selection-results__actions">
 						<button class="selection-results__clear" id="selectionClearBtn">Clear</button>
 						<button class="selection-results__close" id="selectionCloseBtn" aria-label="Close selection panel">✕</button>
@@ -1055,15 +1296,132 @@
 			const ARCHIVE_GEOJSON = {
 				type: "FeatureCollection",
 				features: [
-					{type: "Feature", properties: {time: 1750, category: "poem", creole: "using", creoleType: "french", urlIMG: "../assets/img/book1.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.409993, 15.523156]}},
-					{type: "Feature", properties: {time: 1816, category: "report", creole: "about", creoleType: "english", urlIMG: "../assets/img/book1.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.316598, 15.37628]}},
-					{type: "Feature", properties: {time: 1691, category: "letter", creole: "using", creoleType: "dutch", urlIMG: "../assets/img/book1.jpg", urlText: "./lorem_ipsum.html", resume: ""}, geometry: {type: "Point", coordinates: [-61.346091, 15.544468]}},
-					{type: "Feature", properties: {time: 1763, category: "letter", creole: "about", creoleType: null, urlIMG: "../assets/img/book1.jpg", urlText: "", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.76047, 16.285686]}},
-					{type: "Feature", properties: {time: 1847, category: "letter", creole: "about", creoleType: "spanish", urlIMG: "", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.387352, 16.315212]}},
-					{type: "Feature", properties: {time: 1717, category: "poem", creole: null, creoleType: null, urlIMG: "../assets/img/book2.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.611308, 16.117324]}},
-					{type: "Feature", properties: {time: 1648, category: "bible", creole: "about", creoleType: "portugese", urlIMG: "../assets/img/book2.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-61.145557, 14.819471]}},
-					{type: "Feature", properties: {time: 1689, category: "poem", creole: null, creoleType: "french", urlIMG: "../assets/img/book2.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-60.964977, 14.693279]}},
-					{type: "Feature", properties: {time: 1777, category: "letter", creole: "using", creoleType: null, urlIMG: "../assets/img/book2.jpg", urlText: "./lorem_ipsum.html", resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."}, geometry: {type: "Point", coordinates: [-60.885014, 14.484105]}}
+					{
+						type: "Feature",
+						properties: {
+							name: "A Voyage to Dominica",
+							time: 1750,
+							category: "poem",
+							creole: "using",
+							creoleType: "french",
+							urlIMG: "../assets/img/book1.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.409993, 15.523156]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "British Colonial Report",
+							time: 1816,
+							category: "report",
+							creole: "about",
+							creoleType: "english",
+							urlIMG: "../assets/img/book1.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.316598, 15.37628]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Caribbean Merchant Letter",
+							time: 1691,
+							category: "letter",
+							creole: "using",
+							creoleType: "dutch",
+							urlIMG: "../assets/img/book1.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: ""
+						},
+						geometry: {type: "Point", coordinates: [-61.346091, 15.544468]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Dutch Plantation Letter",
+							time: 1763,
+							category: "letter",
+							creole: "about",
+							creoleType: null,
+							urlIMG: "../assets/img/book1.jpg",
+							urlText: "",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.76047, 16.285686]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Early Missionary Notes",
+							time: 1847,
+							category: "letter",
+							creole: "about",
+							creoleType: "spanish",
+							urlIMG: "",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.387352, 16.315212]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "French Creole Verses",
+							time: 1717,
+							category: "poem",
+							creole: null,
+							creoleType: null,
+							urlIMG: "../assets/img/book2.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.611308, 16.117324]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Holy Scriptures Translation",
+							time: 1648,
+							category: "bible",
+							creole: "about",
+							creoleType: "portugese",
+							urlIMG: "../assets/img/book2.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-61.145557, 14.819471]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Island Folk Ballad",
+							time: 1689,
+							category: "poem",
+							creole: null,
+							creoleType: "french",
+							urlIMG: "../assets/img/book2.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-60.964977, 14.693279]}
+					},
+					{
+						type: "Feature",
+						properties: {
+							name: "Zanzibar Correspondence",
+							time: 1777,
+							category: "letter",
+							creole: "using",
+							creoleType: null,
+							urlIMG: "../assets/img/book2.jpg",
+							urlText: "./lorem_ipsum.html",
+							resume: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ac lorem et vulputate. In tempus, metus vitae varius mattis, nisl justo imperdiet ligula, interdum placerat justo purus laoreet nisl. Quisque vulputate mauris vel velit rutrum malesuada. Mauris ultricies ligula sit amet odio laoreet consectetur. Sed vitae augue ut odio pharetra ultrices. In hac habitasse platea dictumst."
+						},
+						geometry: {type: "Point", coordinates: [-60.885014, 14.484105]}
+					}
 				]
 			}
 
@@ -1234,9 +1592,13 @@
 			 * Toggled when viewing full size image or text
 			 */
 			function toggleWindowPopup() {
-				const popup = document.getElementById("fullText")
-				popup.classList.toggle("show")
+				const visualizer = document.getElementById("visualizer")
+				visualizer.classList.toggle("show")
+
+				L.DomEvent.disableScrollPropagation(visualizer)
+				L.DomEvent.disableClickPropagation(visualizer)
 			}
+
 			/**
 			 * Create a Leaflet marker with a bound popup for a single GeoJSON feature.
 			 *
@@ -1908,41 +2270,77 @@
 			}
 
 			/* ── Dedicated selection-results panel ── */
-
 			function renderSelectionResults() {
 				const count = selectedFeatureIndices.size
 				selectionCountEl.textContent = String(count)
-				selectionResultsEl.classList.toggle("is-visible", count > 0)
 				selectionListEl.innerHTML = ""
 
-				if (count === 0) return
+				if (count === 0) {
+					selectionCountEl.textContent = "0"
+					return
+				}
 
-				Array.from(selectedFeatureIndices)
-					.sort((a, b) => a - b)
-					.forEach(idx => {
-						const feature = ARCHIVE_GEOJSON.features[idx]
-						const marker = allMarkers[idx]
-						const {time, category, creoleType} = feature.properties
-						const color = CATEGORY_COLORS[category] ?? "#8b949e"
+				const sortBy = document.getElementById("selection-results__sort").value
 
-						const row = document.createElement("div")
-						row.className = "result-row"
-						row.innerHTML = `
-						<svg class="result-row__dot" viewBox="0 0 14 14" aria-hidden="true">
-						  <circle cx="7" cy="7" r="6" fill="${color}" />
-						</svg>
-						<div class="result-row__body">
-						  <span class="result-row__cat">${category}</span>
-						  <span class="result-row__meta">${time}${creoleType ? " · " + capitalize(creoleType) : ""}</span>
-						</div>`
+				const indices = Array.from(selectedFeatureIndices)
 
-						row.addEventListener("click", () => {
-							map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 11))
-							marker.openPopup()
-						})
+				indices.sort((a, b) => {
+					const fa = ARCHIVE_GEOJSON.features[a].properties
+					const fb = ARCHIVE_GEOJSON.features[b].properties
 
-						selectionListEl.appendChild(row)
+					switch (sortBy) {
+						case "date":
+							return fa.time - fb.time
+
+						case "documentType":
+							return fa.category.localeCompare(fb.category)
+
+						case "creoleType":
+							return (fa.creoleType ?? "").localeCompare(fb.creoleType ?? "")
+
+						case "name":
+							// when you actually have a title/name property
+							return (fa.name ?? "").localeCompare(fb.name ?? "")
+
+						case "index":
+						default:
+							return a - b
+					}
+				})
+
+				indices.forEach(idx => {
+					const feature = ARCHIVE_GEOJSON.features[idx]
+					const marker = allMarkers[idx]
+					const {name, time, category, creoleType} = feature.properties
+					const color = CATEGORY_COLORS[category] ?? "#8b949e"
+
+					const row = document.createElement("div")
+					row.className = "result-row"
+					row.innerHTML = `
+                            <div class="result-row__left">
+                                <svg class="result-row__dot" viewBox="0 0 14 14" aria-hidden="true">
+				            	    <circle cx="7" cy="7" r="6" fill="${color}" />
+				                </svg>
+                                <span class="result-row__name">${name}</span>
+                            </div>
+				            <div class="result-row__body">
+				            	<span class="result-row__year">${time}</span>
+				            	<span class="result-row__meta">${creoleType ? capitalize(creoleType) + " " : ""}${capitalize(category)}</span>
+				            </div>`
+
+					row.addEventListener("click", () => {
+						map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 11))
+						marker.openPopup()
 					})
+
+					selectionListEl.appendChild(row)
+				})
+
+				let selectionPanelClosed = false
+
+				if (!selectionPanelClosed) {
+					selectionResultsEl.classList.add("is-visible")
+				}
 			}
 
 			document.getElementById("selectionClearBtn").addEventListener("click", () => {
@@ -1950,20 +2348,56 @@
 				renderSelectionHighlights()
 				renderSelectionResults()
 			})
-
 			document.getElementById("selectionCloseBtn").addEventListener("click", () => {
+				selectionPanelClosed = true
 				selectionResultsEl.classList.remove("is-visible")
+			})
+
+			/* ═══════════════════════════════════════════════════════════════
+			    9. CUSTOM SELECT DROPDOWN
+			═══════════════════════════════════════════════════════════════ */
+
+			const select = document.querySelector(".custom-select")
+			const trigger = select.querySelector(".custom-select__trigger")
+			const value = select.querySelector(".custom-select__value")
+			const hiddenInput = select.querySelector("input")
+			const options = select.querySelectorAll(".custom-select__option")
+
+			trigger.addEventListener("click", () => {
+				const open = select.classList.toggle("open")
+				trigger.setAttribute("aria-expanded", open)
+			})
+
+			options.forEach(option => {
+				option.addEventListener("click", () => {
+					options.forEach(o => o.classList.remove("is-selected"))
+					option.classList.add("is-selected")
+
+					value.textContent = option.textContent
+					hiddenInput.value = option.dataset.value
+
+					select.classList.remove("open")
+					trigger.setAttribute("aria-expanded", "false")
+
+					renderSelectionResults()
+				})
+			})
+
+			document.addEventListener("click", e => {
+				if (!select.contains(e.target)) {
+					select.classList.remove("open")
+					trigger.setAttribute("aria-expanded", "false")
+				}
 			})
 		</script>
 	</body>
 </html>
-<!-- 
-    TODO
 
-    FIX RESULT VIEWER
-    -   CLEAR AND CLOSE BEHAVIOURS
-    -   DIFFERENT ORDERING BEHAVIOURS
+<!--
+
+    !TODO!
+    -   ADD SEARCH BAR
+    -   MOBILE LAYOUT
+    -   OVERALL REFACTOR
     
-    OVERALL CLEANUP REFACTOR
-
 -->
